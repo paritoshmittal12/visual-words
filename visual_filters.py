@@ -1,3 +1,8 @@
+'''
+This code was developed as part of the 16-720 A course
+by Carnegie Mellon University
+'''
+
 import os
 import multiprocessing
 from os.path import join, isfile
@@ -35,87 +40,7 @@ def extract_filter_responses(opts, img):
 	* opts: options
 	* img: numpy.ndarray of shape (H,W) or (H,W,3)
 	'''
-	# ----- TODO -----
-	filter_scales = opts.filter_scales
-	if len(img.shape) < 3:
-		img = np.stack([img,img,img],axis=2)
-	img = skimage.color.rgb2lab(img)
-	filter_responses = img[:,:,0]
-	for scale in filter_scales:	
-		for F in filters:
-			if F == gaussian_filter_name:
-				for channel in range(3):
-					x = scipy.ndimage.gaussian_filter(
-						input=img[:,:,channel],
-						sigma=scale)
-					filter_responses = np.dstack(
-						(filter_responses,x)) 
-			elif F == LoG_name:
-				for channel in range(3):
-					x = scipy.ndimage.gaussian_laplace(
-						input=img[:,:,channel],
-						sigma=scale)
-					filter_responses = np.dstack(
-						(filter_responses,x))
-
-			elif F == DeriOfGX_name:
-				for channel in range(3):
-					x = scipy.ndimage.gaussian_filter(
-						input=img[:,:,channel],
-						sigma=scale,order=[0,1])
-					filter_responses = np.dstack(
-						(filter_responses,x))
-
-			elif F == DeriOfGY_name:
-				for channel in range(3):
-					x = scipy.ndimage.gaussian_filter(
-						input=img[:,:,channel],
-						sigma=scale,order=[1,0])
-					filter_responses = np.dstack(
-						(filter_responses,x))
-					
-	filter_responses = filter_responses[:,:,1:]
 	
-	return filter_responses
-
-import os
-import multiprocessing
-from os.path import join, isfile
-import time
-import numpy as np
-import scipy.ndimage
-import skimage.color
-from PIL import Image
-from sklearn.cluster import KMeans
-
-'''
-This Code is used to Extract Filter Responses
-Construct a dictionary of visual words using multiprocessing
-And create wordmaps by measuring the similarity between features and dictionary
-'''
-
-# Set of global variables that indicate the filters used
-gaussian_filter_name = "Gaussian"
-LoG_name = "LoG"
-DeriOfGX_name = "DeriOfGX"
-DeriOfGY_name = "DeriOfGY"
-filters = [gaussian_filter_name,LoG_name,DeriOfGX_name,DeriOfGY_name]
-
-
-'''
-This code is used to extract 3*F filter responses for a given image
-The code iterates over each scale and for each filter F it extracts 
-and stores the response as an additional channel.
-'''
-def extract_filter_responses(opts, img):
-	'''
-	Extracts the filter responses for the given image.
-
-	Args:
-	* opts: options
-	* img: numpy.ndarray of shape (H,W) or (H,W,3)
-	'''
-	# ----- TODO -----
 	filter_scales = opts.filter_scales
 	if len(img.shape) < 3:
 		img = np.stack([img,img,img],axis=2)
@@ -169,15 +94,17 @@ def compute_dictionary_one_image(image_path,opts):
 	'''
 	Extracts a random subset of filter responses of an image and save it to
 	disk. This is a worker function called by compute_dictionary.
-
-	Your are free to make your own interface based on how you implement
-	compute_dictionary.
 	'''
 
-	# ----- TODO -----
-	file_path = join(opts.data_dir, image_path)
-	img = Image.open(file_path)
+	'''
+	Open Image from File
+	'''
+	# file_path = join(opts.data_dir, image_path)
+	
+	# img = Image.open(file_path)
+	
 	img = np.array(img).astype(np.float32) / 255
+	
 	if len(img.shape) < 3:
 		img = np.stack([img,img,img],axis=2)
 
@@ -225,8 +152,6 @@ def compute_dictionary(opts, n_worker=1):
     * opts: options
     * n_worker: number of workers to process in parallel
 
-    [saved]
-    * dictionary: numpy.ndarray of shape (K,3F)
     '''
     
     data_dir = opts.data_dir

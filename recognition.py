@@ -1,3 +1,7 @@
+'''
+This code was developed as part of the 16-720 A course
+by Carnegie Mellon University
+'''
 import os
 import math
 import multiprocessing

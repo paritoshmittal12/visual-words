@@ -1,3 +1,7 @@
+'''
+This code was developed as part of the 16-720 A course
+by Carnegie Mellon University
+'''
 import os
 import math
 import multiprocessing
@@ -172,7 +176,7 @@ def get_image_feature(opts, img_path, dictionary):
     # ----- TODO -----
     img = Image.open(img_path)
     img = np.array(img).astype(np.float32) / 255.
-    wordmap = visual_words.get_visual_words(opts,img,dictionary)
+    wordmap = visual_filters.get_visual_words(opts,img,dictionary)
     image_histograms = get_feature_from_wordmap_SPM(opts,wordmap)
     return image_histograms
 
@@ -200,6 +204,6 @@ def get_image_feature_parallel(opts, img_path,img_label, dictionary):
     img_path = join(opts.data_dir, img_path)
     img = Image.open(img_path)
     img = np.array(img).astype(np.float32) / 255.
-    wordmap = visual_words.get_visual_words(opts,img,dictionary)
+    wordmap = visual_filters.get_visual_words(opts,img,dictionary)
     image_histograms = get_feature_from_wordmap_SPM(opts,wordmap)
     return [image_histograms,img_label]
