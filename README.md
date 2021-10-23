@@ -19,3 +19,9 @@ The experiments are performed on a subset of SUN Dataset.
 </p>
 
 It is interesting to learn that conventional approach can achieve an accuracy of **~73%** on test data.
+
+_______
+#### Notes
+Major part of the code was developed as part of 16720 Intro to CV course at Carnegie Mellon University. This repo is under development.
+
+To contact the author, feel free to write to paritosm@andrew.cmu.edu
