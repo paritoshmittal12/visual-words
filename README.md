@@ -9,3 +9,13 @@ Repo Structure:
 * **spm**: Code for Spatial Pyramid of histogram, used to describe an image.
 
 * **recognition**: Computes a descriptor for each image in train set. Inclues code for Nearest Neighbor, used for inference.
+
+The experiments are performed on a subset of SUN Dataset. 
+
+<p align="center">
+  <img src="images/desert.png">
+  <img src="images/kitchen.png">
+  Visualization of the Image(Left) and it's corresponding wordmap
+</p>
+
+It is interesting to learn that conventional approach can achieve an accuracy of **~73%** on test data.
