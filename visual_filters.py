@@ -29,7 +29,7 @@ filters = [gaussian_filter_name,LoG_name,DeriOfGX_name,DeriOfGY_name]
 
 '''
 This code is used to extract 3*F filter responses for a given image
-The code iterates over each scale and for each filter F it extracts 
+The code iterate over each scale and for each filter F it extracts 
 and stores the response as an additional channel.
 '''
 def extract_filter_responses(opts, img):
