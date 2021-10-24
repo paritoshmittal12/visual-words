@@ -89,7 +89,6 @@ def distance_to_set(word_hist, histograms):
 
     '''
 
-    # ----- TODO -----
     return np.subtract(1,np.sum(np.minimum(word_hist,histograms),axis=1))
 
 

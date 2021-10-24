@@ -15,7 +15,7 @@ The experiments are performed on a subset of SUN Dataset.
 <p align="center">
   <img src="images/desert.png">
   <img src="images/kitchen.png">
-  Visualization of the Image(Left) and it's corresponding wordmap
+  Visualization of the Image(Left) and it's corresponding wordmap (Right)
 </p>
 
 It is interesting to learn that conventional approach can achieve an accuracy of **~73%** on test data.

@@ -202,8 +202,6 @@ def get_visual_words(opts, img, dictionary):
     * img: numpy.ndarray of shape (H,W) or (H,W,3)
     * dictionary: numpy.ndarray of shape (K,3F)
 
-    [output]
-    * wordmap: numpy.ndarray of shape (H,W)
     '''
 
     visual_features = extract_filter_responses(opts,img)

@@ -37,7 +37,7 @@ def get_feature_from_wordmap(opts, wordmap):
     '''
 
     K = opts.K
-    # ----- TODO -----
+    
     hist,_ = np.histogram(wordmap.flatten(),bins = range(K+1),density=True)
     hist = hist.astype(np.float32)
     return hist
@@ -61,7 +61,7 @@ def get_feature_from_wordmap_not_norm(opts, wordmap):
     '''
 
     K = opts.K
-    # ----- TODO -----
+    
     hist,_ = np.histogram(wordmap.flatten(),bins = range(K+1))
     hist = hist.astype(np.float32)
     return hist
@@ -84,7 +84,6 @@ def get_feature_from_wordmap_SPM(opts, wordmap):
 
     K = opts.K
     L = opts.L
-    # ----- TODO -----
     
     '''
     A weights array is initialized with values.
@@ -173,7 +172,6 @@ def get_image_feature(opts, img_path, dictionary):
     * feature: numpy.ndarray of shape (K)
     '''
 
-    # ----- TODO -----
     img = Image.open(img_path)
     img = np.array(img).astype(np.float32) / 255.
     wordmap = visual_filters.get_visual_words(opts,img,dictionary)
@@ -200,7 +198,6 @@ def get_image_feature_parallel(opts, img_path,img_label, dictionary):
     * feature: numpy.ndarray of shape (K)
     '''
 
-    # ----- TODO -----
     img_path = join(opts.data_dir, img_path)
     img = Image.open(img_path)
     img = np.array(img).astype(np.float32) / 255.
